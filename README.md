@@ -8,11 +8,11 @@ Preguntas de Usuario: Los usuarios pueden hacer preguntas sobre cualquier tema.
 - Registros de Preguntas y Respuestas: Se mantiene un registro de todas las preguntas hechas por los usuarios, las respuestas proporcionadas por el chatbot, junto con las fechas correspondientes.
 - Preguntas Predefinidas: Además de las preguntas de usuario, el chatbot también puede responder preguntas predefinidas sobre temas específicos.
 # Tecnologías Utilizadas
-Lenguaje de Programación: Python
-Base de Datos: MySQL
-Librerías: Flask para la creación de la API web.
-Estructura de la Base de Datos
-Tabla de Preguntas de Usuario
+- Lenguaje de Programación: Python
+- Base de Datos: MySQL
+- Librerías: Flask para la creación de la API web.
+- Estructura de la Base de Datos
+- Tabla de Preguntas de Usuario
 
 ID: Identificador único de la pregunta.
 Pregunta: Texto de la pregunta realizada por el usuario.
