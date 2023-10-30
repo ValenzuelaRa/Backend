@@ -1,317 +1,200 @@
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1    Database: db_ite_bot
--- ------------------------------------------------------
--- Server version	5.5.5-10.4.25-MariaDB
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 30-10-2023 a las 19:04:16
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `actividades`
+-- Base de datos: `ite_info`
 --
 
-DROP TABLE IF EXISTS `actividades`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `actividades` (
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comiteacademico`
+--
+
+CREATE TABLE `comiteacademico` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `tipo` varchar(255) DEFAULT NULL,
-  `descripcion` text DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `actividades`
---
-
-LOCK TABLES `actividades` WRITE;
-/*!40000 ALTER TABLE `actividades` DISABLE KEYS */;
-/*!40000 ALTER TABLE `actividades` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `asignaturas`
---
-
-DROP TABLE IF EXISTS `asignaturas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `asignaturas` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `carrera` int(11) DEFAULT NULL,
-  `horarios` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `carrera` (`carrera`),
-  CONSTRAINT `asignaturas_ibfk_1` FOREIGN KEY (`carrera`) REFERENCES `carreras` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `asignaturas`
---
-
-LOCK TABLES `asignaturas` WRITE;
-/*!40000 ALTER TABLE `asignaturas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `asignaturas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `carreras`
---
-
-DROP TABLE IF EXISTS `carreras`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `carreras` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `tipo` varchar(255) DEFAULT NULL,
-  `informacion` text DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `carreras`
---
-
-LOCK TABLES `carreras` WRITE;
-/*!40000 ALTER TABLE `carreras` DISABLE KEYS */;
-/*!40000 ALTER TABLE `carreras` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `departamentos`
---
-
-DROP TABLE IF EXISTS `departamentos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `departamentos` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `departamento` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `departamento` (`departamento`),
-  CONSTRAINT `departamentos_ibfk_1` FOREIGN KEY (`departamento`) REFERENCES `departamentos` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `departamentos`
---
-
-LOCK TABLES `departamentos` WRITE;
-/*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `edificios`
---
-
-DROP TABLE IF EXISTS `edificios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `edificios` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `sector` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `edificios`
---
-
-LOCK TABLES `edificios` WRITE;
-/*!40000 ALTER TABLE `edificios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `edificios` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `estudiantes`
---
-
-DROP TABLE IF EXISTS `estudiantes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `estudiantes` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `carrera` int(11) DEFAULT NULL,
-  `kardex` text DEFAULT NULL,
-  `certificado_estudios` text DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `carrera` (`carrera`),
-  CONSTRAINT `estudiantes_ibfk_1` FOREIGN KEY (`carrera`) REFERENCES `carreras` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `estudiantes`
---
-
-LOCK TABLES `estudiantes` WRITE;
-/*!40000 ALTER TABLE `estudiantes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `estudiantes` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `horarios`
---
-
-DROP TABLE IF EXISTS `horarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `horarios` (
-  `id` int(11) NOT NULL,
-  `id_asignatura` int(11) DEFAULT NULL,
-  `hora` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `horarios`
---
-
-LOCK TABLES `horarios` WRITE;
-/*!40000 ALTER TABLE `horarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `horarios` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `informaciongeneral`
---
-
-DROP TABLE IF EXISTS `informaciongeneral`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `informaciongeneral` (
-  `id` int(11) NOT NULL,
-  `contenido` text DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `informaciongeneral`
---
-
-LOCK TABLES `informaciongeneral` WRITE;
-/*!40000 ALTER TABLE `informaciongeneral` DISABLE KEYS */;
-/*!40000 ALTER TABLE `informaciongeneral` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `preguntas`
---
-
-DROP TABLE IF EXISTS `preguntas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `preguntas` (
-  `id` int(11) NOT NULL,
-  `pregunta` text DEFAULT NULL,
-  `id_profesor` int(11) DEFAULT NULL,
-  `id_carrera` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `preguntas_ibfk_1` FOREIGN KEY (`id`) REFERENCES `profesores` (`id`),
-  CONSTRAINT `preguntas_ibfk_2` FOREIGN KEY (`id`) REFERENCES `carreras` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `preguntas`
---
-
-LOCK TABLES `preguntas` WRITE;
-/*!40000 ALTER TABLE `preguntas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `preguntas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `preguntasusuario`
---
-
-DROP TABLE IF EXISTS `preguntasusuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `preguntasusuario` (
-  `id` int(11) NOT NULL,
-  `pregunta` text DEFAULT NULL,
   `fecha` date DEFAULT NULL,
-  `estudiante` int(11) DEFAULT NULL,
-  `profesor` int(11) DEFAULT NULL,
-  `departamento` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `preguntasusuario_ibfk_1` FOREIGN KEY (`id`) REFERENCES `estudiantes` (`id`),
-  CONSTRAINT `preguntasusuario_ibfk_2` FOREIGN KEY (`id`) REFERENCES `profesores` (`id`),
-  CONSTRAINT `preguntasusuario_ibfk_3` FOREIGN KEY (`id`) REFERENCES `departamentos` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `temasdiscutidos` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `decisionestomadas` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `presidente` int(11) DEFAULT NULL,
+  `secretariotecnico` int(11) DEFAULT NULL,
+  `miembro1` int(11) DEFAULT NULL,
+  `miembro2` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `preguntasusuario`
+-- Estructura de tabla para la tabla `contacto`
 --
 
-LOCK TABLES `preguntasusuario` WRITE;
-/*!40000 ALTER TABLE `preguntasusuario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `preguntasusuario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `profesores`
---
-
-DROP TABLE IF EXISTS `profesores`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `profesores` (
+CREATE TABLE `contacto` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `rol` varchar(255) DEFAULT NULL,
-  `tipo_empleo` varchar(255) DEFAULT NULL,
-  `edificio` int(11) DEFAULT NULL,
-  `departamento` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `edificio` (`edificio`),
-  KEY `departamento` (`departamento`),
-  CONSTRAINT `profesores_ibfk_1` FOREIGN KEY (`edificio`) REFERENCES `edificios` (`id`),
-  CONSTRAINT `profesores_ibfk_2` FOREIGN KEY (`departamento`) REFERENCES `departamentos` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `nombre` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `correoelectronico` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `asunto` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `mensaje` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `fechaenvio` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `profesores`
+-- Estructura de tabla para la tabla `convocatorias`
 --
 
-LOCK TABLES `profesores` WRITE;
-/*!40000 ALTER TABLE `profesores` DISABLE KEYS */;
-/*!40000 ALTER TABLE `profesores` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+CREATE TABLE `convocatorias` (
+  `id` int(11) NOT NULL,
+  `tipo` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `fechapublicacion` date DEFAULT NULL,
+  `requisitos` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `instrucciones` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `responsableconvocatoria` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ofertaeducativa`
+--
+
+CREATE TABLE `ofertaeducativa` (
+  `id` int(11) NOT NULL,
+  `nombrecarrera` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `descripcion` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `perfilingreso` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `perfilegreso` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `reticula` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `videoURL` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `jefeDesarrolloacademico` int(11) DEFAULT NULL,
+  `jefecarrera` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `personal`
+--
+
+CREATE TABLE `personal` (
+  `id` int(11) NOT NULL,
+  `Puesto` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `Nombre` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `correoelectronico` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `departamento` text COLLATE utf8_spanish2_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `serviciosestudiantiles`
+--
+
+CREATE TABLE `serviciosestudiantiles` (
+  `id` int(11) NOT NULL,
+  `nombreServicio` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `descripcion` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `requisitos` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `responsableservicio` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `comiteacademico`
+--
+ALTER TABLE `comiteacademico`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `presidente` (`presidente`),
+  ADD KEY `secretariotecnico` (`secretariotecnico`),
+  ADD KEY `miembro1` (`miembro1`),
+  ADD KEY `miembro2` (`miembro2`);
+
+--
+-- Indices de la tabla `contacto`
+--
+ALTER TABLE `contacto`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `convocatorias`
+--
+ALTER TABLE `convocatorias`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `responsableconvocatoria` (`responsableconvocatoria`);
+
+--
+-- Indices de la tabla `ofertaeducativa`
+--
+ALTER TABLE `ofertaeducativa`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jefeDesarrolloacademico` (`jefeDesarrolloacademico`),
+  ADD KEY `jefecarrera` (`jefecarrera`);
+
+--
+-- Indices de la tabla `personal`
+--
+ALTER TABLE `personal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `serviciosestudiantiles`
+--
+ALTER TABLE `serviciosestudiantiles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `responsableservicio` (`responsableservicio`);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `comiteacademico`
+--
+ALTER TABLE `comiteacademico`
+  ADD CONSTRAINT `comiteacademico_ibfk_1` FOREIGN KEY (`presidente`) REFERENCES `personal` (`id`),
+  ADD CONSTRAINT `comiteacademico_ibfk_2` FOREIGN KEY (`secretariotecnico`) REFERENCES `personal` (`id`),
+  ADD CONSTRAINT `comiteacademico_ibfk_3` FOREIGN KEY (`miembro1`) REFERENCES `personal` (`id`),
+  ADD CONSTRAINT `comiteacademico_ibfk_4` FOREIGN KEY (`miembro2`) REFERENCES `personal` (`id`);
+
+--
+-- Filtros para la tabla `convocatorias`
+--
+ALTER TABLE `convocatorias`
+  ADD CONSTRAINT `convocatorias_ibfk_1` FOREIGN KEY (`responsableconvocatoria`) REFERENCES `personal` (`id`);
+
+--
+-- Filtros para la tabla `ofertaeducativa`
+--
+ALTER TABLE `ofertaeducativa`
+  ADD CONSTRAINT `ofertaeducativa_ibfk_1` FOREIGN KEY (`jefeDesarrolloacademico`) REFERENCES `personal` (`id`),
+  ADD CONSTRAINT `ofertaeducativa_ibfk_2` FOREIGN KEY (`jefecarrera`) REFERENCES `personal` (`id`);
+
+--
+-- Filtros para la tabla `serviciosestudiantiles`
+--
+ALTER TABLE `serviciosestudiantiles`
+  ADD CONSTRAINT `serviciosestudiantiles_ibfk_1` FOREIGN KEY (`responsableservicio`) REFERENCES `personal` (`id`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2023-10-26 18:43:37
