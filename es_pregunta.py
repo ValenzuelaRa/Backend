@@ -33,28 +33,24 @@ def es_pregunta(input_usuario):
 
     # Verificar cada palabra en la cadena
     for palabra in palabras:
-
         if palabra in pronombres_interrogativos:
-            bandera = 1
-            return f'\nEs pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos": {bandera}'  # Pregunta con pronombres interrogativos
-        
-        elif palabra in adjetivos_interrogativos:
-            bandera = 2
-            return f'\nEs pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos": {bandera}'  # Pregunta con adjetivos interrogativos
-       
-        elif palabra in adverbios_interrogativos:
-            bandera = 3
-            return f'\nEs pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos": {bandera}'  # Pregunta con adverbios interrogativos
-       
-        elif palabra in particulas_interrogativas:
-            bandera = 4
-            return f'\nEs pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos": {bandera}'  # Pregunta con partículas interrogativas
+            print(f'\nEs pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos"')
+            bandera = 1  #Pregunta pronombres interrogativa 
 
-    return f'\n"{input_usuario}"No es pregunta: {bandera}'  # No es una pregunta
+        elif palabra in adjetivos_interrogativos:
+            print(f'Es pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Adjetivos interrogativos"')
+            bandera = 2 #Pregunta Adjetivos Interrogativos
+
+        elif palabra in adverbios_interrogativos:
+            print(f'Es pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Adverbios interrogativos"')
+            bandera = 3 #Pregunta Adverbios Interrogativos
+
+        elif palabra in particulas_interrogativas:
+            print(f'Es pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Particulas interrogativas"')
+            bandera = 4 #Pregunta Particulas interrogativas 
+    return bandera   # No es una pregunta
 
 #Llamada a la funcion ingresando el valor del parametro
-print(es_pregunta("Donde puedo encontrar mi perro?"))
-print(es_pregunta("Acaso podria incribirme a la escuela fuera del tiempo de convocatoria?"))
-print(es_pregunta("que esun kardex"))
-print(es_pregunta("Cuando se habre la convocatoria?"))
-print(es_pregunta("Quiero un sushi"))
+pregunta = es_pregunta("que es el kardex")
+
+print(pregunta)
