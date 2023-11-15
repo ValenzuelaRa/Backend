@@ -34,7 +34,7 @@ def es_pregunta(input_usuario):
     # Verificar cada palabra en la cadena
     for palabra in palabras:
         if palabra in pronombres_interrogativos:
-            print(f'\nEs pregunta! --> "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos" {bandera}')
+            print(f'\nEs pregunta! --> "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos"')
             bandera = 1  #Pregunta pronombres interrogativa 
 
         elif palabra in adjetivos_interrogativos:
