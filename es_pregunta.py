@@ -34,7 +34,7 @@ def es_pregunta(input_usuario):
     # Verificar cada palabra en la cadena
     for palabra in palabras:
         if palabra in pronombres_interrogativos:
-            print(f'\nEs pregunta! --> "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos"')
+            print(f'\nEs pregunta! --> "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos" {bandera}')
             bandera = 1  #Pregunta pronombres interrogativa 
 
         elif palabra in adjetivos_interrogativos:
@@ -51,10 +51,10 @@ def es_pregunta(input_usuario):
             print(f'Es pregunta! --> "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Particulas interrogativas"')
             bandera = 4 #Pregunta Particulas interrogativas
              
-    return bandera   # No es una pregunta
+        else: print(f"'{input_usuario}' no es una pregunta") # No es una pregunta
 
 #Llamada a la funcion ingresando el valor del parametro
-pregunta = input("Hola soy el mas pesado de Mexico tu amigo 'Elian Buzo' cual es tu pregunta: ")
+pregunta = input(f"Hola, cual es tu pregunta: ")
 
 es_pregunta(pregunta)
 
