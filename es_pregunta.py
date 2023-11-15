@@ -34,23 +34,27 @@ def es_pregunta(input_usuario):
     # Verificar cada palabra en la cadena
     for palabra in palabras:
         if palabra in pronombres_interrogativos:
-            print(f'\nEs pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos"')
+            print(f'\nEs pregunta! --> "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos"')
             bandera = 1  #Pregunta pronombres interrogativa 
 
         elif palabra in adjetivos_interrogativos:
-            print(f'Es pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Adjetivos interrogativos"')
+            print(f'Es pregunta! --> "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Adjetivos interrogativos"')
             bandera = 2 #Pregunta Adjetivos Interrogativos
 
+        
         elif palabra in adverbios_interrogativos:
-            print(f'Es pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Adverbios interrogativos"')
+            print(f'Es pregunta! --> "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Adverbios interrogativos"')
             bandera = 3 #Pregunta Adverbios Interrogativos
 
+        
         elif palabra in particulas_interrogativas:
-            print(f'Es pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Particulas interrogativas"')
-            bandera = 4 #Pregunta Particulas interrogativas 
+            print(f'Es pregunta! --> "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Particulas interrogativas"')
+            bandera = 4 #Pregunta Particulas interrogativas
+             
     return bandera   # No es una pregunta
 
 #Llamada a la funcion ingresando el valor del parametro
-pregunta = es_pregunta("que es el kardex")
+pregunta = input("Hola soy el mas pesado de Mexico tu amigo 'Natanael Cano' cual es tu pregunta: ")
 
-print(pregunta)
+es_pregunta(pregunta)
+
