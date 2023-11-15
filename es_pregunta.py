@@ -54,7 +54,7 @@ def es_pregunta(input_usuario):
     return bandera   # No es una pregunta
 
 #Llamada a la funcion ingresando el valor del parametro
-pregunta = input("Hola soy el mas pesado de Mexico tu amigo 'Natanael Cano' cual es tu pregunta: ")
+pregunta = input("Hola soy el mas pesado de Mexico tu amigo 'Elian Buzo' cual es tu pregunta: ")
 
 es_pregunta(pregunta)
 
