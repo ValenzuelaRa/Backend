@@ -51,7 +51,7 @@ def es_pregunta(input_usuario):
             print(f'Es pregunta! --> "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Particulas interrogativas"')
             bandera = 4 #Pregunta Particulas interrogativas
              
-        else: print(f"'{input_usuario}' no es una pregunta") # No es una pregunta
+        return bandera # No es una pregunta
 
 #Llamada a la funcion ingresando el valor del parametro
 pregunta = input(f"Hola, cual es tu pregunta: ")
