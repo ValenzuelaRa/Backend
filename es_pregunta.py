@@ -18,7 +18,7 @@ def es_pregunta(input_usuario):
     
     adjetivos_interrogativos = ['que', 'cual', 'cuales', 'cuanto', 'cuantos', 'cuanta', 'cuántas']
     
-    adverbios_interrogativos = ['donde', 'cuando', 'por que', 'como']
+    adverbios_interrogativos = ['cuando', 'por que', 'como']
     
     particulas_interrogativas = ["no","acaso","verdad","a que","o no","no es cierto","no es verdad","no es asi"]
 
@@ -33,13 +33,28 @@ def es_pregunta(input_usuario):
 
     # Verificar cada palabra en la cadena
     for palabra in palabras:
-        if palabra in pronombres_interrogativos:
-            return 1  # Pregunta con pronombres interrogativos
-        elif palabra in adjetivos_interrogativos:
-            return 2  # Pregunta con adjetivos interrogativos
-        elif palabra in adverbios_interrogativos:
-            return 3  # Pregunta con adverbios interrogativos
-        elif palabra in particulas_interrogativas:
-            return 4  # Pregunta con partículas interrogativas
 
-    return 0  # No es una pregunta
+        if palabra in pronombres_interrogativos:
+            bandera = 1
+            return f'\nEs pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos": {bandera}'  # Pregunta con pronombres interrogativos
+        
+        elif palabra in adjetivos_interrogativos:
+            bandera = 2
+            return f'\nEs pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos": {bandera}'  # Pregunta con adjetivos interrogativos
+       
+        elif palabra in adverbios_interrogativos:
+            bandera = 3
+            return f'\nEs pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos": {bandera}'  # Pregunta con adverbios interrogativos
+       
+        elif palabra in particulas_interrogativas:
+            bandera = 4
+            return f'\nEs pregunta: "{input_usuario}"\n\nContiene la palabra: "{palabra}"\n\nTipo de pregunta: "Pronombres interrogativos": {bandera}'  # Pregunta con partículas interrogativas
+
+    return f'\n"{input_usuario}"No es pregunta: {bandera}'  # No es una pregunta
+
+#Llamada a la funcion ingresando el valor del parametro
+print(es_pregunta("Donde puedo encontrar mi perro?"))
+print(es_pregunta("Acaso podria incribirme a la escuela fuera del tiempo de convocatoria?"))
+print(es_pregunta("que esun kardex"))
+print(es_pregunta("Cuando se habre la convocatoria?"))
+print(es_pregunta("Quiero un sushi"))
