@@ -1,36 +1,22 @@
 from flask import Flask, request
-
 from es_pregunta import es_pregunta
 
-# Crear una intancia de la aplicacion
 app = Flask(__name__)
 
-# Establecer la ruta para el request
-@app.route('/pregunta', methods=['POST', 'GET'])
-
-
+@app.route('/pregunta', methods=['GET'])
 def pregunta():
-
-    # Manejo de las solicitudes tipo POST
-    if request.method == 'POST':
-
-        #get.json Obtiene los datos de la solicitud
-        data = request.get_json()
-
-        #Obtiene la pregunta del diccionario
-        pregunta = data.get('pregunta')
-
-        # Verifica el tipo de pregunta con la funcion es_pregunta
-        tipo_pregunta = es_pregunta(pregunta)
-
-        # Devuelve la respuesta en formato JSON
-        return {'Pregunta': pregunta, 'Tipo de Pregunta': tipo_pregunta}
+    pregunta = request.args.get('pregunta', '')
     
-    # Maneja la solicitud GET
-    elif request.method == 'GET':
+    if pregunta:
+        es_pregunta_resultado, tipo_pregunta, palabra_clave = es_pregunta(pregunta)
 
-        # Devuelve un mensaje si los datos ingresados no son preguntas
-        return {'Mensaje': 'No es pregunta'}
+        if es_pregunta_resultado:
+            respuesta = f'Si es pregunta: "{pregunta}"\nTipo de pregunta: "{tipo_pregunta}"\nPalabra clave: "{palabra_clave}"'
+            return respuesta
+        else:
+            return f'No es una pregunta. Código: {tipo_pregunta}', 400
+    else:
+        return 'Parámetro "pregunta" no proporcionado', 400
 
 if __name__ == '__main__':
     app.run(debug=True)
