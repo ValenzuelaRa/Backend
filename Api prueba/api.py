@@ -1,22 +1,27 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from es_pregunta import es_pregunta
 
 app = Flask(__name__)
 
-@app.route('/pregunta', methods=['GET'])
-def pregunta():
+@app.route('/', methods=['GET'])
+def analizar_pregunta():
     pregunta = request.args.get('pregunta', '')
-    
-    if pregunta:
-        es_pregunta_resultado, tipo_pregunta, palabra_clave = es_pregunta(pregunta)
+    resultado, palabra_interrogativa, tipo_pregunta = es_pregunta(pregunta)
 
-        if es_pregunta_resultado:
-            respuesta = f'Si es pregunta: "{pregunta}"\nTipo de pregunta: "{tipo_pregunta}"\nPalabra clave: "{palabra_clave}"'
-            return respuesta
-        else:
-            return f'No es una pregunta. Código: {tipo_pregunta}', 400
+    if resultado != 0:
+        response = {
+            'Es pregunta': f'"{pregunta}"',
+            'Palabra': f'"{palabra_interrogativa}"',
+            'Tipo de Pregunta Detallado': f'"{tipo_pregunta}, {resultado}"'
+        }
     else:
-        return 'Parámetro "pregunta" no proporcionado', 400
+        response = {
+            'Es pregunta': f'"{pregunta}"',
+            'Palabra': '',
+            'Tipo de Pregunta': 'No es una pregunta'
+        }
+
+    return jsonify(response)
 
 if __name__ == '__main__':
     app.run(debug=True)
